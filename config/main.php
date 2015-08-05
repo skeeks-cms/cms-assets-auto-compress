@@ -14,5 +14,10 @@ return [
         [
             'class'         => '\skeeks\cms\assetsAuto\AssetsAutoCompressComponent',
         ],
+
+        'assetsAutoCompressSettings' =>
+        [
+            'class'         => '\skeeks\cms\assetsAuto\SettingsAssetsAutoCompress',
+        ],
     ],
 ];
