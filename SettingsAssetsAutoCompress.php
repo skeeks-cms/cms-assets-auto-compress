@@ -32,6 +32,10 @@ class SettingsAssetsAutoCompress extends \skeeks\cms\base\Component
     public $jsCompressFlaggedComments = true;
 
 
+    /**
+     * @var bool
+     */
+    public $cssCompress = true;
 
 
 
@@ -118,6 +122,7 @@ class SettingsAssetsAutoCompress extends \skeeks\cms\base\Component
             [['jsFileRemouteCompile'], 'boolean'],
             [['jsFileCompress'], 'boolean'],
             [['jsFileCompressFlaggedComments'], 'boolean'],
+            [['cssCompress'], 'boolean'],
         ]);
     }
 
@@ -134,6 +139,7 @@ class SettingsAssetsAutoCompress extends \skeeks\cms\base\Component
             'jsFileRemouteCompile'                      => 'Попытаться скачать файл с удаленного сервера',
             'jsFileCompress'                            => 'Сжимать полученный js файл (удалять комментарии и т.д.)',
             'jsFileCompressFlaggedComments'             => 'Обрезать комментарии',
+            'cssCompress'                               => 'Включить сжатие css встречающегося в коде html',
         ]);
     }
 }

@@ -19,9 +19,13 @@ use skeeks\cms\modules\admin\widgets\form\ActiveFormUseTab as ActiveForm;
     <?= $form->field($model, 'enabled')->radioList(\Yii::$app->formatter->booleanFormat)->hint('Эта опция, отключает и включает работу всего компонента. Отключив ее все другие настройки не будут учитываться.'); ?>
 <?= $form->fieldSetEnd(); ?>
 
-<?= $form->fieldSet('JS обработка в html'); ?>
+<?= $form->fieldSet('Js обработка в html'); ?>
     <?= $form->field($model, 'jsCompress')->radioList(\Yii::$app->formatter->booleanFormat); ?>
     <?= $form->field($model, 'jsCompressFlaggedComments')->radioList(\Yii::$app->formatter->booleanFormat); ?>
+<?= $form->fieldSetEnd(); ?>
+
+<?= $form->fieldSet('Css обработка в html'); ?>
+    <?= $form->field($model, 'cssCompress')->radioList(\Yii::$app->formatter->booleanFormat); ?>
 <?= $form->fieldSetEnd(); ?>
 
 <?= $form->fieldSet('Обработка css файлов'); ?>
