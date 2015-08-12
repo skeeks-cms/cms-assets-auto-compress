@@ -32,6 +32,8 @@ use skeeks\cms\modules\admin\widgets\form\ActiveFormUseTab as ActiveForm;
     <?= $form->field($model, 'cssFileCompile')->radioList(\Yii::$app->formatter->booleanFormat); ?>
     <?= $form->field($model, 'cssFileRemouteCompile')->radioList(\Yii::$app->formatter->booleanFormat); ?>
     <?= $form->field($model, 'cssFileCompress')->radioList(\Yii::$app->formatter->booleanFormat); ?>
+    <?= $form->field($model, 'cssFileBottom')->radioList(\Yii::$app->formatter->booleanFormat); ?>
+    <?= $form->field($model, 'cssFileBottomLoadOnJs')->radioList(\Yii::$app->formatter->booleanFormat); ?>
 <?= $form->fieldSetEnd(); ?>
 
 <?= $form->fieldSet('Обработка js файлов'); ?>
@@ -39,6 +41,14 @@ use skeeks\cms\modules\admin\widgets\form\ActiveFormUseTab as ActiveForm;
     <?= $form->field($model, 'jsFileRemouteCompile')->radioList(\Yii::$app->formatter->booleanFormat); ?>
     <?= $form->field($model, 'jsFileCompress')->radioList(\Yii::$app->formatter->booleanFormat); ?>
     <?= $form->field($model, 'jsFileCompressFlaggedComments')->radioList(\Yii::$app->formatter->booleanFormat); ?>
+<?= $form->fieldSetEnd(); ?>
+
+<?= $form->fieldSet('Быстрая предзагрузка'); ?>
+    <?= $form->field($model, 'enabledPreloader')->radioList(\Yii::$app->formatter->booleanFormat); ?>
+
+    <?= $form->field($model, 'preloaderBodyHtml')->textarea(); ?>
+    <?= $form->field($model, 'preloaderBodyCss')->textarea(); ?>
+    <?= $form->field($model, 'preloaderBodyJs')->textarea(); ?>
 <?= $form->fieldSetEnd(); ?>
 
 <?= $form->buttonsCreateOrUpdate($model); ?>
