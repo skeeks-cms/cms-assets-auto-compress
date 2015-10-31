@@ -1,5 +1,6 @@
-Automatically compile and merge files js + css
+Компонент автоматической компиляции js и css файлов (налету)
 ===================================
+[Страница на SkeekS CMS Marketplace](http://marketplace.cms.skeeks.com/solutions/instrumentyi/razrabotchiku/75-komponent-optimizatsii-koda-js-i-css-d)
 
 Компонент для SkeekS CMS, позволяет объединять и оптимизировать js и css код.
 
