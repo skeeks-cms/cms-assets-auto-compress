@@ -8,6 +8,7 @@
 namespace skeeks\cms\assetsAuto;
 
 use yii\helpers\ArrayHelper;
+use yii\widgets\ActiveForm;
 
 /**
  * Class SettingsAssetsAutoCompress
@@ -161,21 +162,13 @@ JS
         ]);
     }
 
-    /**
-     * Файл с формой настроек, по умолчанию
-     *
-     * @return string
-     */
-    public function getConfigFormFile()
+    public function renderConfigForm(ActiveForm $form)
     {
-        $class = new \ReflectionClass($this->className());
-        return dirname($class->getFileName()) . DIRECTORY_SEPARATOR . 'forms/_settings.php';
+        echo \Yii::$app->view->renderFile(__DIR__ . '/forms/_settings.php', [
+            'form'  => $form,
+            'model' => $this
+        ], $this);
     }
-
-
-
-
-
 
 
     public function rules()
@@ -223,4 +216,7 @@ JS
             'preloaderBodyJs'                           => 'JS код прелоадера (будет вставлен вниз страницы)',
         ]);
     }
+
+
+
 }
