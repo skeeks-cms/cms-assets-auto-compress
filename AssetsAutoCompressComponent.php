@@ -114,7 +114,7 @@ JS
                 $view = $e->sender;
 
                 if ($this->enabled && $view instanceof View && \Yii::$app->response->format == Response::FORMAT_HTML && !\Yii::$app->request->isAjax && !\Yii::$app->request->isPjax
-                        && !\Yii::$app->cms->moduleAdmin->requestIsAdmin()
+                        && !\Yii::$app->admin->requestIsAdmin
                 )
                 {
 
