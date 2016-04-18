@@ -19,5 +19,18 @@ return [
         [
             'class'         => '\skeeks\cms\assetsAuto\SettingsAssetsAutoCompress',
         ],
+
+        'i18n' => [
+            'translations' =>
+            [
+                'skeeks/assets-auto' => [
+                    'class'             => 'yii\i18n\PhpMessageSource',
+                    'basePath'          => '@skeeks/cms/assetsAuto/messages',
+                    'fileMap' => [
+                        'skeeks/assets-auto' => 'main.php',
+                    ],
+                ]
+            ]
+        ],
     ],
 ];

@@ -40,11 +40,4 @@ use yii\helpers\Html;
     <?= $form->field($model, 'jsFileCompressFlaggedComments')->radioList(\Yii::$app->formatter->booleanFormat); ?>
 <?= $form->fieldSetEnd(); ?>
 
-<?= $form->fieldSet('Быстрая предзагрузка'); ?>
-    <?= $form->field($model, 'enabledPreloader')->radioList(\Yii::$app->formatter->booleanFormat); ?>
-
-    <?= $form->field($model, 'preloaderBodyHtml')->textarea(); ?>
-    <?= $form->field($model, 'preloaderBodyCss')->textarea(); ?>
-    <?= $form->field($model, 'preloaderBodyJs')->textarea(); ?>
-<?= $form->fieldSetEnd(); ?>
 

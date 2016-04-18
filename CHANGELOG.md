@@ -1,10 +1,16 @@
 CHANGELOG
 ==============
 
+1.2.0
+-----------------
+  * Added internationalisation
+  * Removed preloader
+  
 1.1.2
 -----------------
   * Request is admin
   * 
+
 1.1.1
 -----------------
   * Request is admin
