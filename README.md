@@ -1,9 +1,44 @@
-Компонент автоматической компиляции js и css файлов (налету)
+Component automatically compile js and css files (on request)
 ===================================
-[Страница на SkeekS CMS Marketplace](http://marketplace.cms.skeeks.com/solutions/instrumentyi/razrabotchiku/75-komponent-optimizatsii-koda-js-i-css-d)
 
-Компонент для SkeekS CMS, позволяет объединять и оптимизировать js и css код.
+Installation
+------------
+
+The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
+
+Either run
+
+```
+php composer.phar require --prefer-dist skeeks/cms-assets-auto-compress "*"
+```
+
+or add
+
+```
+"skeeks/cms-assets-auto-compress": "*"
+```
+
+Configuration app
+----------
+
+```php
+
+
+```
+
+##Links
+* [Web site](http://en.cms.skeeks.com)
+* [Web site (rus)](http://cms.skeeks.com)
+* [Author](http://skeeks.com)
+* [ChangeLog](https://github.com/skeeks-cms/cms-assets-auto-compress/blob/master/CHANGELOG.md)
+* [Page on SkeekS CMS Marketplace](http://marketplace.cms.skeeks.com/solutions/instrumentyi/razrabotchiku/75-komponent-optimizatsii-koda-js-i-css-d)
+
+
+
+___
 
 > [![skeeks!](https://gravatar.com/userimage/74431132/13d04d83218593564422770b616e5622.jpg)](http://skeeks.com)  
-<i>SkeekS CMS (Yii2) — быстро, просто, эффективно!</i>  
-[skeeks.com](http://skeeks.com) | [cms.skeeks.com](http://cms.skeeks.com) | [marketplace.cms.skeeks.com](http://marketplace.cms.skeeks.com)
+<i>SkeekS CMS (Yii2) — quickly, easily and effectively!</i>  
+[skeeks.com](http://skeeks.com) | [en.cms.skeeks.com](http://en.cms.skeeks.com) | [cms.skeeks.com](http://cms.skeeks.com) | [marketplace.cms.skeeks.com](http://marketplace.cms.skeeks.com)
+
+
