@@ -1,6 +1,10 @@
 CHANGELOG
 ==============
 
+1.3.0
+-----------------
+  * Added html compressor
+
 1.2.0
 -----------------
   * Added internationalisation

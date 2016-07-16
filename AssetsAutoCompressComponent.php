@@ -50,6 +50,9 @@ class AssetsAutoCompressComponent extends \skeeks\yii2\assetsAuto\AssetsAutoComp
                 }
             }
 
+            $this->htmlCompressOptions = $this->settings->htmlCompressOptions;
+
+
             if (!\Yii::$app->admin->requestIsAdmin)
             {
                 parent::bootstrap($app);

@@ -40,4 +40,10 @@ use yii\helpers\Html;
     <?= $form->field($model, 'jsFileCompressFlaggedComments')->radioList(\Yii::$app->formatter->booleanFormat); ?>
 <?= $form->fieldSetEnd(); ?>
 
+<?= $form->fieldSet('Обработка HTML'); ?>
+    <?= $form->field($model, 'htmlCompress')->radioList(\Yii::$app->formatter->booleanFormat); ?>
+    <?= $form->field($model, 'htmlCompressExtra')->radioList(\Yii::$app->formatter->booleanFormat); ?>
+    <?= $form->field($model, 'htmlCompressNoComments')->radioList(\Yii::$app->formatter->booleanFormat); ?>
+<?= $form->fieldSetEnd(); ?>
+
 

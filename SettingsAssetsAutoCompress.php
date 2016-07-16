@@ -11,6 +11,8 @@ use yii\helpers\ArrayHelper;
 use yii\widgets\ActiveForm;
 
 /**
+ * @property array htmlCompressOptions
+ *
  * Class SettingsAssetsAutoCompress
  * @package skeeks\cms\assetsAuto
  */
@@ -92,6 +94,26 @@ class SettingsAssetsAutoCompress extends \skeeks\cms\base\Component
 
 
 
+    /**
+     * Enable compression html
+     * @var bool
+     */
+    public $htmlCompress = true;
+
+    /**
+     * Use more compact HTML compression algorithm
+     * @var bool
+     */
+    public $htmlCompressExtra = true;
+
+    /**
+     * During HTML compression, cut out all html comments
+     * @var bool
+     */
+    public $htmlCompressNoComments = true;
+
+
+
 
 
 
@@ -132,6 +154,9 @@ class SettingsAssetsAutoCompress extends \skeeks\cms\base\Component
             [['cssCompress'], 'boolean'],
             [['cssFileBottom'], 'boolean'],
             [['cssFileBottomLoadOnJs'], 'boolean'],
+            [['htmlCompress'], 'boolean'],
+            [['htmlCompressExtra'], 'boolean'],
+            [['htmlCompressNoComments'], 'boolean'],
         ]);
     }
 
@@ -151,9 +176,23 @@ class SettingsAssetsAutoCompress extends \skeeks\cms\base\Component
             'cssCompress'                               => 'Включить сжатие css встречающегося в коде html',
             'cssFileBottom'                             => 'Переносить файлы CSS вниз страницы',
             'cssFileBottomLoadOnJs'                     => 'Переносить файлы CSS вниз страницы и загружать асинхронно при помощи js',
+
+            'htmlCompress'                              => \Yii::t('skeeks/assets-auto', 'Enable compression HTML'),
+            'htmlCompressExtra'                         => \Yii::t('skeeks/assets-auto', 'Use more compact HTML compression algorithm'),
+            'htmlCompressNoComments'                    => \Yii::t('skeeks/assets-auto', 'During HTML compression, cut out all html comments'),
         ]);
     }
 
 
+    /**
+     * @return array
+     */
+    public function getHtmlCompressOptions()
+    {
+        return [
+            'extra'         => (bool) $this->htmlCompressExtra,
+            'no-comments'   => (bool) $this->htmlCompressNoComments,
+        ];
+    }
 
 }
