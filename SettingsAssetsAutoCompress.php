@@ -104,7 +104,7 @@ class SettingsAssetsAutoCompress extends \skeeks\cms\base\Component
      * Use more compact HTML compression algorithm
      * @var bool
      */
-    public $htmlCompressExtra = true;
+    public $htmlCompressExtra = false;
 
     /**
      * During HTML compression, cut out all html comments
