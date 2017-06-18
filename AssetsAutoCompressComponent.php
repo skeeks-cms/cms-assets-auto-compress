@@ -52,10 +52,57 @@ class AssetsAutoCompressComponent extends \skeeks\yii2\assetsAuto\AssetsAutoComp
 
             $this->htmlCompressOptions = $this->settings->htmlCompressOptions;
 
-
-            if (!\Yii::$app->admin->requestIsAdmin)
+            if ($app instanceof \yii\web\Application)
             {
-                parent::bootstrap($app);
+                $app->view->on(View::EVENT_END_PAGE, function(Event $e) use ($app)
+                {
+                    if (\Yii::$app->admin->requestIsAdmin)
+                    {
+                        return false;
+                    }
+
+                    /**
+                     * @var $view View
+                     */
+                    $view = $e->sender;
+
+                    if ($this->enabled && $view instanceof View && $app->response->format == Response::FORMAT_HTML && !$app->request->isAjax && !$app->request->isPjax)
+                    {
+                        \Yii::beginProfile('Compress assets');
+                        $this->_processing($view);
+                        \Yii::endProfile('Compress assets');
+                    }
+
+                    //TODO:: Think about it
+                    if ($this->enabled && $app->request->isPjax && $this->noIncludeJsFilesOnPjax)
+                    {
+                        \Yii::$app->view->jsFiles = null;
+                    }
+                });
+
+                //Html compressing
+                $app->response->on(\yii\web\Response::EVENT_BEFORE_SEND, function (\yii\base\Event $event) use ($app)
+                {
+                    if (\Yii::$app->admin->requestIsAdmin)
+                    {
+                        return false;
+                    }
+
+                    $response = $event->sender;
+
+                    if ($this->enabled && $this->htmlCompress && $response->format == \yii\web\Response::FORMAT_HTML && !$app->request->isAjax && !$app->request->isPjax)
+                    {
+                        if (!empty($response->data))
+                        {
+                            $response->data = $this->_processingHtml($response->data);
+                        }
+
+                        if (!empty($response->content))
+                        {
+                            $response->content = $this->_processingHtml($response->content);
+                        }
+                    }
+                });
             }
         }
     }

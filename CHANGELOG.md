@@ -1,6 +1,10 @@
 CHANGELOG
 ==============
 
+1.4.2
+-----------------
+  * Fixed
+  
 1.4.1
 -----------------
   * Html compress no extra by default
