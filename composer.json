@@ -17,7 +17,7 @@
 		}
 	],
 	"require": {
-		"skeeks/yii2-assets-auto-compress": "*"
+		"skeeks/yii2-assets-auto-compress": "^1"
 	},
     "autoload": {
         "psr-4": {
