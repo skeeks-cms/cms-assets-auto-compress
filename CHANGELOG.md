@@ -1,6 +1,10 @@
 CHANGELOG
 ==============
 
+1.5.0
+-----------------
+ * Using composer-config-plugin
+ 
 1.4.3
 -----------------
   * Update

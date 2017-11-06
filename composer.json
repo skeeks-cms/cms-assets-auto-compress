@@ -2,12 +2,12 @@
 	"name": "skeeks/cms-assets-auto-compress",
 	"description": "Automatically compile and merge files js + css for SkeekS CMS",
 	"keywords": ["yii", "app", "skeeks", "sx", "framework", "js", "css", "assets", "auto assets"],
-    "homepage": "http://www.skeeks.com/",
+    "homepage": "https://skeeks.com/",
 	"type": "yii2-extension",
 	"license": "GPL-3.0+",
 	"support": {
-        "issues": "http://www.skeeks.com/",
-        "wiki": "http://cms.skeeks.com/wiki/",
+        "issues": "https://www.skeeks.com/",
+        "wiki": "https://cms.skeeks.com/",
         "source": "https://github.com/skeeks-semenov/yii2-assets-auto-compress"
     },
 	"authors": [
@@ -21,7 +21,12 @@
 	},
     "autoload": {
         "psr-4": {
-            "skeeks\\cms\\assetsAuto\\": ""
+            "skeeks\\cms\\assetsAuto\\": "src/"
+        }
+    },
+	"extra": {
+        "config-plugin": {
+            "web": "src/config/main.php"
         }
     }
 }
