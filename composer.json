@@ -4,7 +4,7 @@
 	"keywords": ["yii", "app", "skeeks", "sx", "framework", "js", "css", "assets", "auto assets"],
     "homepage": "https://skeeks.com/",
 	"type": "yii2-extension",
-	"license": "GPL-3.0+",
+	"license": "GPL-3.0+BSD-3-Clause",
 	"support": {
         "issues": "https://www.skeeks.com/",
         "wiki": "https://cms.skeeks.com/",
