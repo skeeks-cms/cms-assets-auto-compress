@@ -1,6 +1,10 @@
 CHANGELOG
 ==============
 
+1.6.0
+-----------------
+ * Updated skeeks/yii2-assets-auto-compress 
+ 
 1.5.0
 -----------------
  * Using composer-config-plugin
