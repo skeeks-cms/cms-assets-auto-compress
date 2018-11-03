@@ -1,6 +1,10 @@
 CHANGELOG
 ==============
 
+1.6.1
+-----------------
+ * Disabled for all backends
+ 
 1.6.0
 -----------------
  * Updated skeeks/yii2-assets-auto-compress 

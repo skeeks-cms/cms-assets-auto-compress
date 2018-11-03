@@ -8,6 +8,7 @@
 
 namespace skeeks\cms\assetsAuto;
 
+use skeeks\cms\backend\BackendComponent;
 use skeeks\yii2\assetsAuto\formatters\html\TylerHtmlCompressor;
 use yii\base\Event;
 use yii\web\Application;
@@ -54,7 +55,7 @@ class AssetsAutoCompressComponent extends \skeeks\yii2\assetsAuto\AssetsAutoComp
 
             if ($app instanceof \yii\web\Application) {
                 $app->view->on(View::EVENT_END_PAGE, function (Event $e) use ($app) {
-                    if (\Yii::$app->admin->requestIsAdmin) {
+                    if (BackendComponent::getCurrent()) {
                         return false;
                     }
 
