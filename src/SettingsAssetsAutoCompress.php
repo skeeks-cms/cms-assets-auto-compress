@@ -5,8 +5,11 @@
  * @copyright 2010 SkeekS (СкикС)
  * @date 31.07.2015
  */
+
 namespace skeeks\cms\assetsAuto;
 
+use skeeks\cms\assetsAuto\assets\AutoCompressAsset;
+use skeeks\cms\backend\widgets\ActiveFormBackend;
 use yii\helpers\ArrayHelper;
 use yii\widgets\ActiveForm;
 
@@ -24,7 +27,6 @@ class SettingsAssetsAutoCompress extends \skeeks\cms\base\Component
     public $enabled = false;
 
 
-
     /**
      * @var bool
      */
@@ -39,8 +41,6 @@ class SettingsAssetsAutoCompress extends \skeeks\cms\base\Component
      * @var bool
      */
     public $cssCompress = true;
-
-
 
 
     /**
@@ -70,8 +70,6 @@ class SettingsAssetsAutoCompress extends \skeeks\cms\base\Component
     public $cssFileBottomLoadOnJs = false;
 
 
-
-
     /**
      * @var bool Включение объединения js файлов
      */
@@ -93,7 +91,6 @@ class SettingsAssetsAutoCompress extends \skeeks\cms\base\Component
     public $jsFileCompressFlaggedComments = true;
 
 
-
     /**
      * Enable compression html
      * @var bool
@@ -113,11 +110,6 @@ class SettingsAssetsAutoCompress extends \skeeks\cms\base\Component
     public $htmlCompressNoComments = true;
 
 
-
-
-
-
-
     /**
      * Можно задать название и описание компонента
      * @return array
@@ -125,15 +117,25 @@ class SettingsAssetsAutoCompress extends \skeeks\cms\base\Component
     static public function descriptorConfig()
     {
         return array_merge(parent::descriptorConfig(), [
-            'name'          => \Yii::t('skeeks/assets-auto', 'Compilation settings js and css'),
+            'name'  => \Yii::t('skeeks/assets-auto', 'Compilation js, css, html'),
+            'image' => [
+                AutoCompressAsset::class,
+                'icon.png'
+            ],
         ]);
+    }
+
+
+    public function beginConfigForm()
+    {
+        return ActiveFormBackend::begin();
     }
 
     public function renderConfigFormFields(ActiveForm $form)
     {
-        return \Yii::$app->view->renderFile(__DIR__ . '/forms/_settings.php', [
+        return \Yii::$app->view->renderFile(__DIR__.'/forms/_settings.php', [
             'form'  => $form,
-            'model' => $this
+            'model' => $this,
         ], $this);
     }
 
@@ -163,23 +165,23 @@ class SettingsAssetsAutoCompress extends \skeeks\cms\base\Component
     public function attributeLabels()
     {
         return ArrayHelper::merge(parent::attributeLabels(), [
-            'enabled'                                   => 'Включена',
-            'jsCompress'                                => 'Компиляция js в коде html',
-            'jsCompressFlaggedComments'                 => 'Обрезание комментариев в (компиляция js в коде html)',
-            'cssFileCompile'                            => 'Включить объединение css файлов в один',
-            'cssFileRemouteCompile'                     => 'Попытаться скачать файл с удаленного сервера',
-            'cssFileCompress'                           => 'Сжимать полученный css файл (удалять комментарии и т.д.)',
-            'jsFileCompile'                             => 'Включить объединение js файлов в один',
-            'jsFileRemouteCompile'                      => 'Попытаться скачать файл с удаленного сервера',
-            'jsFileCompress'                            => 'Сжимать полученный js файл (удалять комментарии и т.д.)',
-            'jsFileCompressFlaggedComments'             => 'Обрезать комментарии',
-            'cssCompress'                               => 'Включить сжатие css встречающегося в коде html',
-            'cssFileBottom'                             => 'Переносить файлы CSS вниз страницы',
-            'cssFileBottomLoadOnJs'                     => 'Переносить файлы CSS вниз страницы и загружать асинхронно при помощи js',
+            'enabled'                       => 'Включена',
+            'jsCompress'                    => 'Компиляция js в коде html',
+            'jsCompressFlaggedComments'     => 'Обрезание комментариев в (компиляция js в коде html)',
+            'cssFileCompile'                => 'Включить объединение css файлов в один',
+            'cssFileRemouteCompile'         => 'Попытаться скачать файл с удаленного сервера',
+            'cssFileCompress'               => 'Сжимать полученный css файл (удалять комментарии и т.д.)',
+            'jsFileCompile'                 => 'Включить объединение js файлов в один',
+            'jsFileRemouteCompile'          => 'Попытаться скачать файл с удаленного сервера',
+            'jsFileCompress'                => 'Сжимать полученный js файл (удалять комментарии и т.д.)',
+            'jsFileCompressFlaggedComments' => 'Обрезать комментарии',
+            'cssCompress'                   => 'Включить сжатие css встречающегося в коде html',
+            'cssFileBottom'                 => 'Переносить файлы CSS вниз страницы',
+            'cssFileBottomLoadOnJs'         => 'Переносить файлы CSS вниз страницы и загружать асинхронно при помощи js',
 
-            'htmlCompress'                              => \Yii::t('skeeks/assets-auto', 'Enable compression HTML'),
-            'htmlCompressExtra'                         => \Yii::t('skeeks/assets-auto', 'Use more compact HTML compression algorithm'),
-            'htmlCompressNoComments'                    => \Yii::t('skeeks/assets-auto', 'During HTML compression, cut out all html comments'),
+            'htmlCompress'           => \Yii::t('skeeks/assets-auto', 'Enable compression HTML'),
+            'htmlCompressExtra'      => \Yii::t('skeeks/assets-auto', 'Use more compact HTML compression algorithm'),
+            'htmlCompressNoComments' => \Yii::t('skeeks/assets-auto', 'During HTML compression, cut out all html comments'),
         ]);
     }
 
@@ -190,8 +192,8 @@ class SettingsAssetsAutoCompress extends \skeeks\cms\base\Component
     public function getHtmlCompressOptions()
     {
         return [
-            'extra'         => (bool) $this->htmlCompressExtra,
-            'no-comments'   => (bool) $this->htmlCompressNoComments,
+            'extra'       => (bool)$this->htmlCompressExtra,
+            'no-comments' => (bool)$this->htmlCompressNoComments,
         ];
     }
 
