@@ -71,8 +71,15 @@ class AssetsAutoCompressComponent extends \skeeks\yii2\assetsAuto\AssetsAutoComp
                     }
 
                     //TODO:: Think about it
-                    if ($this->enabled && $app->request->isPjax && $this->noIncludeJsFilesOnPjax) {
-                        \Yii::$app->view->jsFiles = null;
+                    if ($this->enabled && $app->request->isPjax) {
+
+                        if ($this->noIncludeJsFilesOnPjax && $this->jsFileCompile) {
+                            \Yii::$app->view->jsFiles = null;
+                        }
+
+                        if ($this->noIncludeCssFilesOnPjax && $this->cssFileCompile) {
+                            \Yii::$app->view->cssFiles = null;
+                        }
                     }
                 });
 
@@ -88,11 +95,6 @@ class AssetsAutoCompressComponent extends \skeeks\yii2\assetsAuto\AssetsAutoComp
                         if (!empty($response->data)) {
                             $response->data = $this->_processingHtml($response->data);
                         }
-
-                        /*if (!empty($response->content))
-                        {
-                            $response->content = $this->_processingHtml($response->content);
-                        }*/
                     }
                 });
             }
