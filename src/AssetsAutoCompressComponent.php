@@ -55,8 +55,19 @@ class AssetsAutoCompressComponent extends \skeeks\yii2\assetsAuto\AssetsAutoComp
 
             if ($app instanceof \yii\web\Application) {
                 $app->view->on(View::EVENT_END_PAGE, function (Event $e) use ($app) {
+
                     if (BackendComponent::getCurrent()) {
+                        //При включении компиляции CKEDitor не работает
                         return false;
+                        //TODO: доработать
+                        if (YII_ENV_DEV) {
+                            return false;
+                        }
+
+                        $this->enabled = true;
+                        $this->jsFileCompileByGroups = false;
+                        $this->jsFileCompile = true;
+                        $this->cssFileCompile = false;
                     }
 
                     /**
