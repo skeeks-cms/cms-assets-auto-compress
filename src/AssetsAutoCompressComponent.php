@@ -103,7 +103,7 @@ class AssetsAutoCompressComponent extends \skeeks\yii2\assetsAuto\AssetsAutoComp
                     $response = $event->sender;
 
                     if ($this->enabled && $this->htmlCompress && $response->format == \yii\web\Response::FORMAT_HTML && !$app->request->isAjax && !$app->request->isPjax) {
-                        if (!empty($response->data)) {
+                        if (!empty($response->data) && is_string($response->data)) {
                             $response->data = $this->_processingHtml($response->data);
                         }
                     }
