@@ -8,7 +8,7 @@
 
 namespace skeeks\cms\assetsAuto;
 
-use skeeks\cms\assetsAuto\assets\AutoCompressAsset;
+use skeeks\cms\assets\CmsAsset;
 use skeeks\cms\backend\widgets\ActiveFormBackend;
 use yii\helpers\ArrayHelper;
 use yii\widgets\ActiveForm;
@@ -119,8 +119,8 @@ class SettingsAssetsAutoCompress extends \skeeks\cms\base\Component
         return array_merge(parent::descriptorConfig(), [
             'name'  => \Yii::t('skeeks/assets-auto', 'Compilation js, css, html'),
             'image' => [
-                AutoCompressAsset::class,
-                'icon.png'
+                CmsAsset::class,
+                'images/icons/admin-menu/assets.svg'
             ],
         ]);
     }
