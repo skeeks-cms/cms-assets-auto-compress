@@ -17,7 +17,7 @@
 		}
 	],
 	"require": {
-		"skeeks/yii2-assets-auto-compress": "~1.4.0 || dev-master@dev"
+		"skeeks/yii2-assets-auto-compress": "~1.4.6 || dev-master@dev"
 	},
     "autoload": {
         "psr-4": {
@@ -26,7 +26,14 @@
     },
 	"extra": {
         "config-plugin": {
-            "web": "src/config/main.php"
+            "web": [
+                "src/config/common.php",
+                "src/config/main.php"
+            ],
+            "console": [
+                "src/config/common.php",
+                "src/config/console.php"
+            ]
         }
     }
 }

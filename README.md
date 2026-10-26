@@ -50,6 +50,22 @@ Configuration app
 
 ```
 
+Cleanup of compiled files
+--------
+
+Compiled css/js files are named by their content and removed when no page has
+used them for 7 days (see `skeeks/yii2-assets-auto-compress` README). The package
+config (web and console, `src/config/common.php`) registers, when `skeeks/cms-job`
+is installed, the job type `assets-auto-compress.cleanup` on the `maintenance`
+queue and, with `skeeks/cms-agent`, its daily schedule `job:assets-auto-compress.cleanup`.
+Apply the schedule with `php yii cmsAgent/init`; it needs `cmsAgent/execute` and a
+`maintenance` consumer. Directories come from `cms->tmpFolderScheme['assets']`.
+
+Payload (editable in the schedule): `{"days": 7, "dryRun": false}`, both optional.
+The run reports deleted files and freed space.
+
+Manual run: `php yii assets-auto-compress/cleanup --dry-run` (`--days=N`).
+
 Links
 --------
 * [Web site](http://en.cms.skeeks.com)
